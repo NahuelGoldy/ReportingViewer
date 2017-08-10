@@ -195,7 +195,6 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -409,8 +408,10 @@
           </Tablix>
           <Subreport Name="Subreport1">
             <ReportName>Caratula</ReportName>
-            <Height>3.88cm</Height>
-            <Width>16.72167cm</Width>
+            <Top>0.26458cm</Top>
+            <Left>0.3175cm</Left>
+            <Height>3.43903cm</Height>
+            <Width>16.08667cm</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
