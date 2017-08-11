@@ -238,7 +238,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!CustomerPurchaseOrderNumber.Value</Value>
+                                  <Value>=IIf((Previous(Fields!CustomerPurchaseOrderNumber.Value) - Fields!CustomerPurchaseOrderNumber.Value ) &gt; 0, Fields!CustomerPurchaseOrderNumber.Value, 0)</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -308,12 +308,12 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>="Promedio redondeado:"</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Center</TextAlign>
+                                <TextAlign>Right</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -330,6 +330,7 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -341,7 +342,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>="Promedio redondeado: " &amp; Round(Avg(int(Fields!CustomerPurchaseOrderNumber.Value)))</Value>
+                                  <Value>=Round(Avg(int(Fields!CustomerPurchaseOrderNumber.Value)))</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -408,6 +409,14 @@
           </Tablix>
           <Subreport Name="Subreport1">
             <ReportName>Caratula</ReportName>
+            <Parameters>
+              <Parameter Name="from">
+                <Value>=Parameters!fromDate.Value</Value>
+              </Parameter>
+              <Parameter Name="to">
+                <Value>=Parameters!toDate.Value</Value>
+              </Parameter>
+            </Parameters>
             <Top>0.26458cm</Top>
             <Left>0.3175cm</Left>
             <Height>3.43903cm</Height>
@@ -450,35 +459,6 @@
               <Left>13.38474cm</Left>
               <Height>0.6cm</Height>
               <Width>3.33692cm</Width>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Textbox8">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>="Desde: " &amp; Parameters!fromDate.Value &amp; "  hasta: " &amp; Parameters!toDate.Value</Value>
-                      <Style />
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox8</rd:DefaultName>
-              <Top>0.81703cm</Top>
-              <Height>0.6cm</Height>
-              <Width>8.59014cm</Width>
-              <ZIndex>1</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
